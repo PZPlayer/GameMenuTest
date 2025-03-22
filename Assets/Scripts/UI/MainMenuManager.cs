@@ -8,16 +8,31 @@ namespace PP5.UI
         [SerializeField] private GameObject _entryMenu;
         [SerializeField] private GameObject _pressStartMenu;
 
-        private bool canPressStart = false;
+        [SerializeField] private AudioClip _pressSound;
+        [SerializeField] private AudioClip _pointOnButtonSound;
 
+        private bool canPressStart = false;
+        
+        private AudioSource audioSource;
+
+        void Start ()
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         private void Update()
         {
             if(canPressStart && Input.anyKey)
             {
-                _pressStartMenu.GetComponent<Animator>().SetTrigger("Pressed");
-                canPressStart = false;
+                OnPressAnyButton();
             }
+        }
+
+        private void OnPressAnyButton()
+        {
+            _pressStartMenu.GetComponent<Animator>().SetTrigger("Pressed");
+            audioSource.PlayOneShot(_pressSound);
+            canPressStart = false;
         }
 
         public void HideEntr()
