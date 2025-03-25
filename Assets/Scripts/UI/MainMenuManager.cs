@@ -7,6 +7,7 @@ namespace PP5.UI
         [SerializeField] private GameObject _mainMenu;
         [SerializeField] private GameObject _entryMenu;
         [SerializeField] private GameObject _pressStartMenu;
+        [SerializeField] private GameObject _soundTrack;
 
         [SerializeField] private AudioClip _pressSound;
         [SerializeField] private AudioClip _pointOnButtonSound;
@@ -32,6 +33,7 @@ namespace PP5.UI
         {
             _pressStartMenu.GetComponent<Animator>().SetTrigger("Pressed");
             audioSource.PlayOneShot(_pressSound);
+            _soundTrack.SetActive(true);
             canPressStart = false;
         }
 

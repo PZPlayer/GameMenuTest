@@ -8,10 +8,17 @@ namespace PP5.UI
         [SerializeField] private MainMenuManager _mMenuManager;
         [SerializeField] private AudioClip _soundHighLightPlay;
         [SerializeField] private AudioClip _soundPressPlay;
+        [SerializeField] private GameObject _hidePanel;
 
         public void HideEntryMenu()
         {
             _mMenuManager.HideEntr();
+        }
+
+        public void HidePanel()
+        {
+            if(!_hidePanel) return;
+            _hidePanel.SetActive(false);
         }
 
         public void HidePressStartMenu()
